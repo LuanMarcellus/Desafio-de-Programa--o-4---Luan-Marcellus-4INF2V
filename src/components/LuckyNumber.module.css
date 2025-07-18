@@ -1,31 +1,28 @@
 .container {
-  text-align: center;
-  padding: 2rem;
-  background: linear-gradient(to right, #1f1f1f, #2b2b2b);
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-  color: #fff;
-  font-family: "Segoe UI", sans-serif;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 2rem;
+    height: 100vh;
+    background-color: var(--primary);
+    font-size: 3rem;
 }
 
 .button {
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background: #00e0ff;
-  color: #000;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    background-color: var(--primary-light);
+    color: var(--primary-contrast-dark);
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: bolder;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .button:hover {
-  background: #00bcd4;
-  transform: scale(1.05);
-}
-
-.result {
-  margin-top: 2rem;
-  font-size: 1.1rem;
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+    transform: scale(1.05);
 }

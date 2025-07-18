@@ -2,32 +2,39 @@ import { useState } from "react";
 import styles from "./LuckyNumber.module.css";
 
 export function LuckyNumber() {
-  const [luckyNumbers, setLuckyNumbers] = useState([]);
-  const [message, setMessage] = useState("Lucky Number 🎲");
+  const [luckyNumber, setLuckyNumber] = useState(0);
+  const [array, setArray] = useState([]);
+  const [message, setMessage] = useState("");
 
   function handleClick() {
-    const newNumber = Math.floor(Math.random() * 40) + 1;
+    var n = Math.floor(Math.random() * 40) + 1;
+    setLuckyNumber(n);
 
-    if (luckyNumbers.includes(newNumber)) {
-      setMessage(`Já foi sorteado! (${newNumber})`);
+    if (array.includes(n)) {
+      setMessage(`The number ${n} has already been chosen!`);
     } else {
-      setLuckyNumbers([...luckyNumbers, newNumber]);
-      setMessage(`Lucky Number = ${newNumber}`);
+      setMessage("");
+      setArray([...array, n]);
     }
   }
 
   return (
     <div className={styles.container}>
-      <h1>{message}</h1>
-
+      {luckyNumber === 0 ? (
+        <h1>Lucky Number 🎲</h1>
+      ) : (
+        <h1>Lucky Number = {luckyNumber}</h1>
+      )}
+      {message && <p>{message}</p>}
       <button className={styles.button} onClick={handleClick}>
         I'm Feeling Lucky Today!
       </button>
-
-      <div className={styles.result}>
-        <h2>Números sorteados:</h2>
-        <p>{luckyNumbers.join(", ") || "Nenhum número ainda."}</p>
-      </div>
+      {array.length > 0 && (
+        <div>
+          <h3>Lucky Numbers Array:</h3>
+          <p>[{[...array].toString()}]</p>
+        </div>
+      )}
     </div>
   );
 }

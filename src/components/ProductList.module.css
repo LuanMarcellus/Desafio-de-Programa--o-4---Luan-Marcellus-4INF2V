@@ -90,3 +90,93 @@
   cursor: pointer;
   margin-bottom: 1rem;
 }
+
+.continueBtn {
+  padding: 0.75rem 1rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  background: #f57224;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.continueBtn:hover {
+  background: #d75d12;
+}
+
+.cartPage {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background: #fff;
+}
+
+.cartContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.productsSection {
+  flex: 2;
+  min-width: 300px;
+}
+
+.summarySection {
+  flex: 1;
+  min-width: 280px;
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.pix {
+  background: #e0ffe9;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #007b00;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.continueBtn {
+  width: 100%;
+  padding: 1rem;
+  background: #f57224;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.backBtn {
+  width: 100%;
+  padding: 1rem;
+  background: white;
+  color: #f57224;
+  border: 2px solid #f57224;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+.garantia {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.garantia h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.garantia label {
+  display: block;
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+}

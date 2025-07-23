@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import styles from "./ProductList.module.css";
 import { CircularProgress } from "@mui/material";
@@ -27,42 +28,57 @@ export function ProductList({ addToCart, removeFromCart, cart, showCart, setShow
       fetchProducts();
     }, 2000);
   }, []);
+if (showCart) {
+  const total = cart.reduce((total, item) => total + item.price * item.qty, 0);
+  const totalPix = total * 0.9;
 
-  if (showCart) {
-    return (
-      <div className={styles.cartContainer}>
-        <h2>Seu Carrinho</h2>
-        <button onClick={() => setShowCart(false)} className={styles.backButton}>
-          Voltar para produtos
-        </button>
-        
-        {cart.length === 0 ? (
-          <p>Seu carrinho está vazio</p>
-        ) : (
-          <div className={styles.cartItems}>
-            {cart.map((item) => (
+  return (
+    <div className={styles.cartPage}>
+      <h2>Resumo do Pedido</h2>
+
+      <div className={styles.cartContent}>
+        <div className={styles.productsSection}>
+          <button onClick={() => setShowCart(false)} className={styles.backBtn}>
+            Voltar para produtos
+          </button>
+
+          {cart.length === 0 ? (
+            <p>Seu carrinho está vazio</p>
+          ) : (
+            cart.map((item) => (
               <div key={item.id} className={styles.cartItem}>
                 <img src={item.thumbnail} alt={item.title} className={styles.cartItemImage} />
                 <div className={styles.cartItemDetails}>
                   <h3>{item.title}</h3>
-                  <p>Preço unitário: ${item.price}</p>
+                  <p>Preço unitário: R$ {item.price.toFixed(2)}</p>
                   <div className={styles.cartItemQty}>
                     <button onClick={() => removeFromCart(item.id)}>-</button>
                     <span>{item.qty}</span>
                     <button onClick={() => addToCart(item)}>+</button>
                   </div>
-                  <p>Subtotal: ${(item.price * item.qty).toFixed(2)}</p>
+                  <p>Subtotal: R$ {(item.price * item.qty).toFixed(2)}</p>
                 </div>
               </div>
-            ))}
-            <div className={styles.cartTotal}>
-              <h3>Total: ${cart.reduce((total, item) => total + (item.price * item.qty), 0).toFixed(2)}</h3>
-            </div>
-          </div>
-        )}
+            ))
+          )}
+        </div>
+
+        <div className={styles.summarySection}>
+          <h3>RESUMO</h3>
+          <p>Valor dos Produtos: <strong>R$ {total.toFixed(2)}</strong></p>
+          <p>Total à prazo: <strong>R$ {total.toFixed(2)}</strong></p>
+          <p className={styles.pix}>
+            Valor à vista no PIX: <strong>R$ {totalPix.toFixed(2)}</strong><br />
+            (Economize: R$ {(total - totalPix).toFixed(2)})
+          </p>
+          <button className={styles.continueBtn}>CONTINUAR</button>
+          <button onClick={() => setShowCart(false)} className={styles.backBtn}>VOLTAR</button>
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
+
 
   return (
     <div className={styles.container}>

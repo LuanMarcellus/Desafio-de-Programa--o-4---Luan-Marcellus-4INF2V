@@ -28,6 +28,10 @@ export function MyGrid() {
             <h2>Card 5</h2>
             <p>This is the fifth card.</p>
           </div>
+          <div className={styles.card}>
+            <h2>Card 5</h2>
+            <p>This is the fifth card.</p>
+          </div>
         </div>
       </main>
       <footer className={styles.footer} />

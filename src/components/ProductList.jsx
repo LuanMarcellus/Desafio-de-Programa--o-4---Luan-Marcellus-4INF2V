@@ -11,7 +11,8 @@ export function ProductList({ addToCart, removeFromCart, cart, showCart, setShow
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+const [seguroSelecionado, setSeguroSelecionado] = useState(false); // <--- ADICIONE ESTA LINHA
+  const valorDoSeguro = 2000; // <--- ADICIONE ESTA LINHA (Você pode mudar o valor aqui)
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -29,7 +30,11 @@ export function ProductList({ addToCart, removeFromCart, cart, showCart, setShow
     }, 2000);
   }, []);
 if (showCart) {
-  const total = cart.reduce((total, item) => total + item.price * item.qty, 0);
+  let total = cart.reduce((total, item) => total + item.price * item.qty, 0); // <--- MANTENHA ESTA LINHA COM 'let'
+  
+  if (seguroSelecionado) {
+    total += valorDoSeguro; 
+  }
   const totalPix = total * 0.9;
 
   return (
@@ -67,6 +72,18 @@ if (showCart) {
           <h3>RESUMO</h3>
           <p>Valor dos Produtos: <strong>R$ {total.toFixed(2)}</strong></p>
           <p>Total à prazo: <strong>R$ {total.toFixed(2)}</strong></p>
+          
+          <div className={styles.insuranceOption}>
+            <input
+              type="checkbox"
+              id="seguro"
+              checked={seguroSelecionado}
+              onChange={() => setSeguroSelecionado(!seguroSelecionado)}
+            />
+            <label htmlFor="seguro">12 Meses de Garantia (Seguro) (R$ {valorDoSeguro.toFixed(2)})</label>
+          </div>
+         
+
           <p className={styles.pix}>
             Valor à vista no PIX: <strong>R$ {totalPix.toFixed(2)}</strong><br />
             (Economize: R$ {(total - totalPix).toFixed(2)})

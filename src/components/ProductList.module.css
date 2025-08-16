@@ -180,3 +180,32 @@
   margin-bottom: 0.25rem;
   cursor: pointer;
 }
+
+.insuranceOption {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+}
+
+.paymentOptions {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #eaf6ff;
+  border-radius: 8px;
+}
+
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
+.videoPlayer {
+  width: 90%;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #000;
+}
